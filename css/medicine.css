@@ -1,0 +1,359 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.18), transparent 30%),
+        radial-gradient(circle at 85% 80%, rgba(168, 85, 247, 0.18), transparent 30%),
+        linear-gradient(135deg, #07111f, #0b1730, #101b3d);
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* Background glow */
+body::before {
+    content: "";
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: rgba(59, 130, 246, 0.12);
+    filter: blur(100px);
+    border-radius: 50%;
+    top: -100px;
+    left: -100px;
+    z-index: -1;
+    animation: glowMove 8s ease-in-out infinite alternate;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    background: rgba(139, 92, 246, 0.12);
+    filter: blur(100px);
+    border-radius: 50%;
+    bottom: -100px;
+    right: -100px;
+    z-index: -1;
+    animation: glowMove2 10s ease-in-out infinite alternate;
+}
+
+
+/* Main container */
+.medicine {
+    width: 90%;
+    max-width: 1250px;
+    margin: 70px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+
+/* Cards */
+.medicine-card {
+    position: relative;
+    padding: 32px;
+    min-height: 330px;
+
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    overflow: hidden;
+
+    opacity: 0;
+    transform: translateY(40px);
+
+    animation: cardAppear 0.8s ease forwards;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+}
+
+
+/* Different animation delay for every box */
+.medicine-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.medicine-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.medicine-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.medicine-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.medicine-card:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.medicine-card:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+
+/* Hover animation */
+.medicine-card:hover {
+    transform: translateY(-12px) scale(1.02);
+
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.35),
+        0 0 30px rgba(59, 130, 246, 0.12);
+
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+
+/* Moving shine effect */
+.medicine-card::before {
+    content: "";
+    position: absolute;
+
+    width: 180px;
+    height: 400px;
+
+    top: -100px;
+    left: -250px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.12),
+        transparent
+    );
+
+    transform: rotate(25deg);
+
+    transition: left 0.7s ease;
+}
+
+.medicine-card:hover::before {
+    left: 120%;
+}
+
+
+/* Small glow inside card */
+.medicine-card::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+
+    top: -40px;
+    right: -40px;
+
+    background: rgba(96, 165, 250, 0.15);
+    border-radius: 50%;
+    filter: blur(30px);
+
+    transition: transform 0.5s ease;
+}
+
+.medicine-card:hover::after {
+    transform: scale(1.8);
+}
+
+
+/* Icon */
+.icon {
+    font-size: 48px;
+    margin-bottom: 18px;
+
+    display: inline-block;
+
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.15));
+
+    animation: floating 3s ease-in-out infinite;
+}
+
+
+/* Title */
+.medicine-card h2 {
+    font-size: 25px;
+    margin-bottom: 22px;
+
+    color: #ffffff;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* Links list */
+.medicine-card ul {
+    list-style: none;
+}
+
+.medicine-card li {
+    margin: 13px 0;
+}
+
+
+/* Links */
+.medicine-card a {
+    position: relative;
+
+    color: #c7d2fe;
+    text-decoration: none;
+
+    font-size: 16px;
+
+    transition:
+        color 0.3s ease,
+        padding-left 0.3s ease;
+}
+
+
+.medicine-card a:hover {
+    color: #60a5fa;
+    padding-left: 8px;
+}
+
+
+/* Arrow appears on hover */
+.medicine-card a::before {
+    content: "→";
+
+    position: absolute;
+    left: -15px;
+
+    opacity: 0;
+
+    transition: 0.3s ease;
+}
+
+
+.medicine-card a:hover::before {
+    opacity: 1;
+    left: -10px;
+}
+
+
+/* Card colored borders */
+.anatomy {
+    border-top: 4px solid #ef4444;
+}
+
+.physiology {
+    border-top: 4px solid #3b82f6;
+}
+
+.pathology {
+    border-top: 4px solid #a855f7;
+}
+
+.pharmacology {
+    border-top: 4px solid #22c55e;
+}
+
+.clinical {
+    border-top: 4px solid #f59e0b;
+}
+
+.medical-research {
+    border-top: 4px solid #06b6d4;
+}
+
+
+/* Animations */
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes floating {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+
+@keyframes glowMove {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(180px, 100px);
+    }
+}
+
+
+@keyframes glowMove2 {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(-150px, -100px);
+    }
+}
+
+
+/* Tablet */
+@media (max-width: 950px) {
+
+    .medicine {
+        grid-template-columns: repeat(2, 1fr);
+        width: 92%;
+    }
+}
+
+
+/* Phone */
+@media (max-width: 600px) {
+
+    .medicine {
+        grid-template-columns: 1fr;
+        width: 90%;
+        margin: 40px auto;
+    }
+
+    .medicine-card {
+        min-height: auto;
+        padding: 26px;
+    }
+
+    .medicine-card h2 {
+        font-size: 22px;
+    }
+
+    .medicine-card a {
+        font-size: 15px;
+    }
+}

@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    color: white;
+
+    background:
+        radial-gradient(circle at 15% 20%, rgba(59,130,246,.2), transparent 30%),
+        radial-gradient(circle at 85% 70%, rgba(168,85,247,.18), transparent 30%),
+        linear-gradient(135deg, #090d1a, #111a35, #15102b);
+
+    overflow-x: hidden;
+}
+
+.business {
+    width: 90%;
+    max-width: 1250px;
+    margin: 70px auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.business-card {
+    position: relative;
+
+    min-height: 330px;
+    padding: 30px;
+
+    background: rgba(255,255,255,.065);
+
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 22px;
+
+    backdrop-filter: blur(15px);
+
+    box-shadow: 0 20px 45px rgba(0,0,0,.35);
+
+    opacity: 0;
+    animation: businessAppear .7s ease forwards;
+
+    transition: .4s ease;
+}
+
+.business-card:nth-child(1) { animation-delay: .1s; }
+.business-card:nth-child(2) { animation-delay: .2s; }
+.business-card:nth-child(3) { animation-delay: .3s; }
+.business-card:nth-child(4) { animation-delay: .4s; }
+.business-card:nth-child(5) { animation-delay: .5s; }
+.business-card:nth-child(6) { animation-delay: .6s; }
+
+.business-card:hover {
+    transform: translateY(-12px) rotateX(2deg);
+
+    border-color: rgba(96,165,250,.5);
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.45),
+        0 0 30px rgba(59,130,246,.1);
+}
+
+.icon {
+    font-size: 45px;
+    margin-bottom: 18px;
+
+    transition: .4s ease;
+}
+
+.business-card:hover .icon {
+    transform: translateY(-5px) scale(1.12);
+}
+
+.business-card h2 {
+    font-size: 24px;
+    margin-bottom: 22px;
+    color: #bfdbfe;
+}
+
+.business-card ul {
+    list-style: none;
+}
+
+.business-card li {
+    margin: 13px 0;
+}
+
+.business-card a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 15.5px;
+
+    transition: .3s ease;
+}
+
+.business-card a:hover {
+    color: #60a5fa;
+    padding-left: 8px;
+}
+
+.management { border-top: 3px solid #3b82f6; }
+.marketing { border-top: 3px solid #a855f7; }
+.entrepreneurship { border-top: 3px solid #22c55e; }
+.accounting { border-top: 3px solid #f59e0b; }
+.leadership { border-top: 3px solid #ec4899; }
+.finance { border-top: 3px solid #06b6d4; }
+
+@keyframes businessAppear {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 950px) {
+    .business {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .business {
+        grid-template-columns: 1fr;
+        width: 90%;
+        margin: 40px auto;
+    }
+
+    .business-card {
+        min-height: auto;
+    }
+}

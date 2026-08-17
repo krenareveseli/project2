@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MiniLibraryAI - Personalized AI-driven study platform" />
+
+  <title>MiniLibraryAI</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="../MiniLibAI/images/LOGO.png">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">MiniLibraryAI</div>
+
+    <nav class="nav">
+      <a href="#" target="_parent">Home</a>
+      <a href="./html/dashboard.html" target="_parent">Dashboard</a>
+      <a href="./html/flashcards.html" target="_parent">FlashCards</a>
+      <a href="./html/planner.html" target="_parent">StudyPlanner</a>
+      <a href="./html/quizzes.html" target="_parent">Quizz</a>
+
+
+
+    </nav>
+
+<button class="btn-primary" onclick="openForm()">Get Started</button>
+<div id="formModal" class="modal">
+  <div class="modal-box">
+
+    <h2>Sign Up</h2>
+
+    <input id="name" type="text" placeholder="Name">
+    <input id="email" type="email" placeholder="Email">
+    <input id="age" type="number" placeholder="Age">
+    <input id="password" type="password" placeholder="Password">
+
+    <button onclick="registerUser()">Create Account</button>
+    <button onclick="closeForm()">Close</button>
+
+  </div>
+</div>
+
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h1>Learn smarter with AI</h1>
+    <p>
+      Personalized study resources, progress tracking, and interactive exercises
+      to help you learn faster and better.
+    </p>
+    <br>
+
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="startLearning()">Start Learning</button>
+      <a href="../MiniLibAI/html/library.html"><button class="btn-secondary">Explore Library</button></a>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="card">
+      <h3>MiniLibraryAI</h3>
+      <img src="../MiniLibAI/images/10.jpg">
+      <p>Track your learning and improve daily.</p>
+       <a href="#" target="_parent">Home</a>
+
+    </div>
+    <div class="card">
+      <h3>📚 Smart Library</h3>
+      <img src="../MiniLibAI/images/6.jpg">
+      <p>Organized study materials for every subject.</p>
+      <a href="../MiniLibAI/html/library.html" target="_parent">LIBRARY</a>
+     
+    </div>
+
+    <div class="card">
+      <h3>🤖 AI Assistance</h3>
+      <img src="../MiniLibAI/images/7.jpg">
+      <p>Get explanations and help instantly.</p>
+            <a href="../MiniLibAI/html/aitour.html" target="_parent">AI Tour</a>
+
+    </div>
+
+    <div class="card">
+      <h3>📈 Progress Tracking</h3>
+      <img src="../MiniLibAI/images/1.jpg">
+      <p>Track your learning and improve daily.</p>
+            <a href="../MiniLibAI/html/progress.html" target="_parent">Progress</a>
+
+    </div>
+      <div class="card">
+      <h3>🗒️Flash Cards</h3>
+      <img src="../MiniLibAI/images/8.jpg">
+      <p>Track your learning and improve daily.</p>
+                  <a href="../MiniLibAI/html/flashcards.html" target="_parent">FlashCrads</a>
+
+    </div>
+      <div class="card">
+      <h3>📆STUDY PLANNER</h3>
+      <img src="../MiniLibAI/images/2.jpg">
+      <p>Track your learning and improve daily.</p>
+       <a href="../MiniLibAI/html/planner.html" target="_parent">Planner</a>
+
+    </div>
+      <div class="card">
+      <h3>🧮QUIZZ TIME</h3>
+      <img src="../MiniLibAI/images/3.jpg">
+      <p>Track your learning and improve daily.</p>
+       <a href="../MiniLibAI/html/quizzes.html" target="_parent">Quizz</a>
+
+    </div>
+      <div class="card">
+      <h3>📌DASHBOARD</h3>
+      <img src="../MiniLibAI/images/4.jpg">
+      <p>Track your learning and improve daily.</p>
+       <a href="../MiniLibAI/html/dashboard.html" target="_parent">Dashboard</a>
+
+    </div>
+      <div class="card">
+      <h3>📇SETTINGS</h3>
+      <img src="../MiniLibAI/images/set.jpg">
+      <p>Track your learning and improve daily.</p>
+       <a href="../MiniLibAI/html/setting.html" target="_parent">Settings</a>
+
+    </div>
+    
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2026 MiniLibraryAI. All rights reserved.</p>
+  </footer>
+<script src="script.js"></script>
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal">
+  <div class="modal-box">
+
+    <h2>Login</h2>
+
+    <input id="loginName" type="text" placeholder="Name">
+    <input id="loginPass" type="password" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+    <button onclick="showSignup()">No account? Sign Up</button>
+
+  </div>
+</div>
+
+</body>
+</html>

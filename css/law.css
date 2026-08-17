@@ -1,0 +1,431 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    min-height: 100vh;
+
+    color: #f8f1df;
+
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(212, 175, 55, 0.13),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 85%,
+            rgba(30, 58, 95, 0.5),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #070b14,
+            #0d1626,
+            #111827
+        );
+}
+
+
+/* Subtle legal-paper lines */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 39px,
+            rgba(212, 175, 55, 0.025) 40px
+        );
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* Golden glow */
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    width: 350px;
+    height: 350px;
+
+    top: -120px;
+    right: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(212, 175, 55, 0.08);
+
+    filter: blur(80px);
+
+    animation: goldGlow 7s ease-in-out infinite alternate;
+
+    z-index: -1;
+}
+
+
+/* Main section */
+
+.law {
+    width: 90%;
+    max-width: 1250px;
+
+    margin: 70px auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 28px;
+}
+
+
+/* Cards */
+
+.law-card {
+    position: relative;
+
+    min-height: 335px;
+
+    padding: 32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.075),
+            rgba(255, 255, 255, 0.025)
+        );
+
+    border: 1px solid rgba(212, 175, 55, 0.22);
+
+    border-radius: 6px;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transform: translateY(35px);
+
+    animation: cardEntrance 0.8s ease forwards;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+}
+
+
+/* Entrance delays */
+
+.law-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.law-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.law-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.law-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.law-card:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.law-card:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+
+/* Hover */
+
+.law-card:hover {
+    transform: translateY(-10px);
+
+    border-color: rgba(212, 175, 55, 0.65);
+
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.45),
+        0 0 25px rgba(212, 175, 55, 0.08);
+}
+
+
+/* Golden top line */
+
+.law-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 0;
+    height: 3px;
+
+    background: #d4af37;
+
+    transform: translateX(-50%);
+
+    transition: width 0.5s ease;
+}
+
+.law-card:hover::before {
+    width: 100%;
+}
+
+
+/* Decorative corner */
+
+.law-card::after {
+    content: "§";
+
+    position: absolute;
+
+    right: 15px;
+    bottom: -15px;
+
+    font-size: 90px;
+
+    color: rgba(212, 175, 55, 0.035);
+
+    transition:
+        transform 0.5s ease,
+        color 0.5s ease;
+}
+
+.law-card:hover::after {
+    transform: rotate(-8deg) scale(1.15);
+
+    color: rgba(212, 175, 55, 0.07);
+}
+
+
+/* Icon */
+
+.icon {
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 34px;
+
+    margin-bottom: 20px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(212, 175, 55, 0.16),
+            rgba(212, 175, 55, 0.03)
+        );
+
+    border: 1px solid rgba(212, 175, 55, 0.3);
+
+    box-shadow:
+        0 0 20px rgba(212, 175, 55, 0.08);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+.law-card:hover .icon {
+    transform: rotate(8deg) scale(1.1);
+
+    box-shadow:
+        0 0 25px rgba(212, 175, 55, 0.2);
+}
+
+
+/* Titles */
+
+.law-card h2 {
+    font-size: 24px;
+
+    margin-bottom: 22px;
+
+    color: #f3d98b;
+
+    letter-spacing: 0.3px;
+}
+
+
+/* List */
+
+.law-card ul {
+    list-style: none;
+}
+
+.law-card li {
+    margin: 13px 0;
+
+    padding-left: 14px;
+
+    border-left: 1px solid rgba(212, 175, 55, 0.2);
+
+    transition:
+        padding-left 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+/* Links */
+
+.law-card a {
+    color: #cbd5e1;
+
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 15.5px;
+
+    transition:
+        color 0.3s ease,
+        letter-spacing 0.3s ease;
+}
+
+
+.law-card a:hover {
+    color: #e7c75f;
+
+    letter-spacing: 0.25px;
+}
+
+
+.law-card li:hover {
+    padding-left: 20px;
+
+    border-color: #d4af37;
+}
+
+
+/* Different gold accents */
+
+.constitutional {
+    border-bottom: 3px solid #d4af37;
+}
+
+.criminal {
+    border-bottom: 3px solid #b8860b;
+}
+
+.civil {
+    border-bottom: 3px solid #c9a227;
+}
+
+.international {
+    border-bottom: 3px solid #eab308;
+}
+
+.human-rights {
+    border-bottom: 3px solid #facc15;
+}
+
+.legal-research {
+    border-bottom: 3px solid #d4af37;
+}
+
+
+/* Card entrance */
+
+@keyframes cardEntrance {
+
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Glow animation */
+
+@keyframes goldGlow {
+
+    from {
+        transform: translate(0, 0) scale(1);
+    }
+
+    to {
+        transform: translate(-80px, 80px) scale(1.3);
+    }
+}
+
+
+/* Tablet */
+
+@media (max-width: 950px) {
+
+    .law {
+        grid-template-columns: repeat(2, 1fr);
+
+        width: 92%;
+    }
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .law {
+        grid-template-columns: 1fr;
+
+        width: 90%;
+
+        margin: 40px auto;
+    }
+
+    .law-card {
+        min-height: auto;
+
+        padding: 26px;
+    }
+
+    .law-card h2 {
+        font-size: 21px;
+    }
+
+    .law-card a {
+        font-size: 15px;
+    }
+}
