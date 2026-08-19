@@ -29,7 +29,10 @@
 
     </nav>
 
-<button class="btn-primary" onclick="openForm()">Get Started</button>
+<div class="auth-buttons">
+  <a href="./html/login.html" class="btn-secondary">Log in</a>
+  <a href="./html/signup.html" class="btn-primary">Sign up</a>
+</div>
 <div id="formModal" class="modal">
   <div class="modal-box">
 
@@ -58,8 +61,8 @@
     <br>
 
     <div class="hero-actions">
-      <button class="btn-primary" onclick="startLearning()">Start Learning</button>
-      <a href="../MiniLibAI/html/library.html"><button class="btn-secondary">Explore Library</button></a>
+      <a href="./html/login.html" class="btn-primary">Start Learning</a>
+      <a href="./html/library.html" class="btn-secondary">Explore Library</a>
     </div>
   </section>
 
@@ -134,25 +137,24 @@
 
   </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>© 2026 MiniLibraryAI. All rights reserved.</p>
-  </footer>
-<script src="script.js"></script>
-<!-- LOGIN MODAL -->
-<div id="loginModal" class="modal">
-  <div class="modal-box">
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
-    <h2>Login</h2>
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAirdw4-gLhjRUyaA-M7wqoI038nj1Z32o",
+    authDomain: "minilibraryai.firebaseapp.com",
+    projectId: "minilibraryai",
+    storageBucket: "minilibraryai.firebasestorage.app",
+    messagingSenderId: "145104976702",
+    appId: "1:145104976702:web:e5fa8c038fea6830310a6f"
+  };
 
-    <input id="loginName" type="text" placeholder="Name">
-    <input id="loginPass" type="password" placeholder="Password">
-
-    <button onclick="login()">Login</button>
-    <button onclick="showSignup()">No account? Sign Up</button>
-
-  </div>
-</div>
-
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
 </body>
 </html>

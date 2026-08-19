@@ -20,50 +20,48 @@
 
     <div class="library-grid">
 
-        <a href="science.html" class="library-card">
+        <a href="resources.html#science" class="library-card">
             <div class="icon">🔬</div>
             <h2>Science</h2>
             <p>Mathematics, Biology, Chemistry, Physics...</p>
         </a>
 
-        <a href="medicine.html" class="library-card">
-            <div class="icon">🩺</div>
+<a href="resources.html#medicine" class="library-card">            <div class="icon">🩺</div>
             <h2>Medicine</h2>
             <p>Anatomy, Physiology, Pathology...</p>
         </a>
 
-        <a href="engineering.html" class="library-card">
+<a href="resources.html#engineering" class="library-card">
             <div class="icon">💻</div>
             <h2>Engineering</h2>
             <p>Programming, AI, Networks...</p>
         </a>
 
-        <a href="law.html" class="library-card">
+<a href="resources.html#law" class="library-card">
             <div class="icon">⚖️</div>
             <h2>Law</h2>
             <p>Civil Law, Criminal Law...</p>
         </a>
 
-        <a href="economics.html" class="library-card">
+<a href="resources.html#economics" class="library-card">
             <div class="icon">💰</div>
             <h2>Economics</h2>
             <p>Finance, Accounting, Marketing...</p>
         </a>
 
-        <a href="business.html" class="library-card">
+<a href="resources.html#business" class="library-card">
             <div class="icon">📊</div>
             <h2>Business</h2>
             <p>Management, Entrepreneurship...</p>
         </a>
 
-        <a href="languages.html" class="library-card">
+<a href="resources.html#languages" class="library-card">
             <div class="icon">🌍</div>
             <h2>Languages</h2>
             <p>English, German, French...</p>
         </a>
 
-        <a href="others.html" class="library-card">
-            <div class="icon">📖</div>
+<a href="resources.html#more-subjects" class="library-card">            <div class="icon">📖</div>
             <h2>More Subjects</h2>
             <p>History, Geography, Psychology...</p>
         </a>
@@ -71,6 +69,16 @@
     </div>
 
 </div>
+<script type="module">
+  import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+  import { auth } from "./firebase-config.js";
+
+  onAuthStateChanged(auth, (user) => {
+    if (!user) {
+      window.location.href = "login.html";
+    }
+  });
+</script>
 
 </body>
 </html>

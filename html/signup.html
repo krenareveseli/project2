@@ -1,0 +1,55 @@
+
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | MiniLibAI</title>
+    <link rel="stylesheet" href="../css/auth.css">
+
+</head><body>
+    <main>
+        <form id="signupForm">
+            <h1>Create your account</h1>
+            <p>Sign up to access the Digital Library.</p>
+
+            <label>Email
+                <input id="email" type="email" autocomplete="email" required="">
+            </label>
+
+            <label>Password
+                <input id="password" type="password" minlength="6" autocomplete="new-password" required="">
+            </label>
+
+            <button type="submit">Sign up</button>
+            <p id="message" aria-live="polite"></p>
+            <p>Already have an account? <a href="login.html">Login</a></p>
+        </form>
+    </main>
+
+    <script type="module">
+        import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+        import { auth } from "./firebase-config.js";
+
+        const form = document.getElementById("signupForm");
+        const message = document.getElementById("message");
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            message.textContent = "";
+
+            try {
+                await createUserWithEmailAndPassword(
+                    auth,
+                    document.getElementById("email").value,
+                    document.getElementById("password").value
+                );
+                window.location.href = "library.html";
+            } catch (error) {
+                message.textContent = error.code === "auth/email-already-in-use"
+                    ? "This email already has an account. Please log in."
+                    : "Password must have at least 6 characters.";
+            }
+        });
+    </script>
+
+
+</body>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Tutor | MiniLibraryAI</title>
+
+  <link rel="stylesheet" href="../css/chat.css">
+</head>
+
+<body>
+  <main class="chat-container">
+    <a class="back-link" href="aitour.html">← Back to AI Tutor</a>
+
+    <header class="chat-header">
+      <span id="subjectIcon">🧠</span>
+      <div>
+        <p>MiniLibraryAI</p>
+        <h1 id="chatTitle">AI Tutor</h1>
+      </div>
+    </header>
+
+    <section id="messages" class="messages">
+      <div class="message ai">
+        Hi! Ask me anything about this subject.
+      </div>
+    </section>
+
+    <form id="chatForm" class="chat-form">
+      <input
+        id="userInput"
+        type="text"
+        placeholder="Write your question..."
+        autocomplete="off"
+        required
+      >
+      <button type="submit">Send</button>
+    </form>
+  </main>
+
+  <script>
+    const subject = new URLSearchParams(window.location.search).get("subject") || "general";
+
+    const icons = {
+      biology: "🧬",
+      chemistry: "🧪",
+      physics: "⚛️",
+      math: "📐",
+      medicine: "🩺",
+      programming: "💻",
+      law: "⚖️",
+      economics: "💰"
+    };
+
+    document.getElementById("chatTitle").textContent =
+      `AI Tutor: ${subject.charAt(0).toUpperCase() + subject.slice(1)}`;
+
+    document.getElementById("subjectIcon").textContent =
+      icons[subject] || "🧠";
+
+    const form = document.getElementById("chatForm");
+    const input = document.getElementById("userInput");
+    const messages = document.getElementById("messages");
+
+    function addMessage(text, type) {
+      const message = document.createElement("div");
+      message.className = `message ${type}`;
+      message.textContent = text;
+      messages.appendChild(message);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const userMessage = input.value.trim();
+      if (!userMessage) return;
+
+      addMessage(userMessage, "user");
+      input.value = "";
+
+      const loading = document.createElement("div");
+      loading.className = "message ai";
+      loading.textContent = "Thinking...";
+      messages.appendChild(loading);
+
+      try {
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            subject: subject,
+            message: userMessage
+          })
+        });
+
+        const data = await response.json();
+        loading.remove();
+
+        addMessage(data.reply, "ai");
+      } catch (error) {
+        loading.remove();
+        addMessage("Sorry, the AI Tutor is unavailable right now.", "ai");
+      }
+    });
+  </script>
+</body>
+</html>

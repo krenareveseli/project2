@@ -1,0 +1,104 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | MiniLibAI</title>
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body>
+
+    <main>
+        <form id="loginForm">
+            <h1>Welcome back</h1>
+            <p>Log in to access the Digital Library.</p>
+
+            <label>Email
+                <input id="email" type="email" autocomplete="email" required="">
+            </label>
+
+            <label>Password
+                <input id="password" type="password" autocomplete="current-password" required="">
+            </label>
+
+            <button type="submit">Login</button>
+            <p id="message" aria-live="polite"></p>
+            <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+        </form>
+    </main>
+
+    <script type="module">
+        import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+        import { auth } from "./firebase-config.js";
+
+        const form = document.getElementById("loginForm");
+        const message = document.getElementById("message");
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            message.textContent = "";
+
+            try {
+                await signInWithEmailAndPassword(
+                    auth,
+                    document.getElementById("email").value,
+                    document.getElementById("password").value
+                );
+                window.location.href = "library.html";
+            } catch (error) {
+                message.textContent = "Email or password is incorrect.";
+            }
+        });
+    </script>
+
+
+</body><div id="codex-browser-sidebar-comments-root" style="position: fixed; inset: 0px; pointer-events: none; z-index: 2147483647;"></div></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | MiniLibAI</title>
+</head>
+<body>
+    <main>
+        <form id="loginForm">
+            <h1>Welcome back</h1>
+            <p>Log in to access the Digital Library.</p>
+
+            <label>Email
+                <input id="email" type="email" autocomplete="email" required="">
+            </label>
+
+            <label>Password
+                <input id="password" type="password" autocomplete="current-password" required="">
+            </label>
+
+            <button type="submit">Login</button>
+            <p id="message" aria-live="polite"></p>
+            <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+        </form>
+    </main>
+
+    <script type="module">
+        import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+        import { auth } from "./firebase-config.js";
+
+        const form = document.getElementById("loginForm");
+        const message = document.getElementById("message");
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            message.textContent = "";
+
+            try {
+                await signInWithEmailAndPassword(
+                    auth,
+                    document.getElementById("email").value,
+                    document.getElementById("password").value
+                );
+                window.location.href = "library.html";
+            } catch (error) {
+                message.textContent = "Email or password is incorrect.";
+            }
+        });
+    </script>
+
+
+</body>
